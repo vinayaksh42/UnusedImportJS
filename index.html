@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AST Visualizer</title>
+    <style>
+        .node {
+            margin-left: 20px;
+            position: relative;
+        }
+        .node::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            border-left: 1px solid black;
+            height: 100%;
+        }
+        .node::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            border-top: 1px solid black;
+            width: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <div id="ast"></div>
+
+    <script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const ast = JSON.parse(e.target.result);
+                visualizeAST(ast);
+            };
+            reader.readAsText(file);
+        }
+    }, false);
+
+    function createNodeElement(node) {
+        let element = document.createElement('div');
+        element.className = 'node';
+        element.textContent = `${node.type}: ${node.name || (node.value || '')}`;
+        return element;
+    }
+
+    function buildTree(node, parentElement) {
+        if (!node) return;
+
+        let nodeElement = createNodeElement(node);
+        parentElement.appendChild(nodeElement);
+
+        if (node.body && Array.isArray(node.body)) {
+            node.body.forEach(child => buildTree(child, nodeElement));
+        } else if (node.specifiers && Array.isArray(node.specifiers)) {
+            node.specifiers.forEach(child => buildTree(child, nodeElement));
+        } else if (node.expression) {
+            buildTree(node.expression, nodeElement);
+        } else if (node.arguments && Array.isArray(node.arguments)) {
+            node.arguments.forEach(child => buildTree(child, nodeElement));
+        } else if (node.callee) {
+            buildTree(node.callee, nodeElement);
+        }
+    }
+
+    function visualizeAST(ast) {
+        let container = document.getElementById('ast');
+        container.innerHTML = ''; // Clear previous AST
+        buildTree(ast, container);
+    }
+</script>
+</body>
+</html>
