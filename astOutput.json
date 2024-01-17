@@ -1,0 +1,237 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "usedFunction"
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "usedFunction"
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "unusedFunction"
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "unusedFunction"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./fakeFunction",
+        "raw": "'./fakeFunction'"
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "usedValue"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./fakeFunction",
+        "raw": "'./fakeFunction'"
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "activeFeature"
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "activeFeature"
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "inactiveFeature"
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "inactiveFeature"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./fakeFunction",
+        "raw": "'./fakeFunction'"
+      }
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "testFunction"
+      },
+      "params": [],
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "console"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "This is a test function.",
+                  "raw": "'This is a test function.'"
+                }
+              ]
+            }
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "usedFunction"
+              },
+              "arguments": []
+            }
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "console"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "usedValue"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "generator": false,
+      "expression": false,
+      "async": false
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "anotherFunction"
+      },
+      "params": [],
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "console"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "This function uses an active feature.",
+                  "raw": "'This function uses an active feature.'"
+                }
+              ]
+            }
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "activeFeature"
+              },
+              "arguments": []
+            }
+          }
+        ]
+      },
+      "generator": false,
+      "expression": false,
+      "async": false
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "testFunction"
+        },
+        "arguments": []
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "anotherFunction"
+        },
+        "arguments": []
+      }
+    }
+  ],
+  "sourceType": "module"
+}
